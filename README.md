@@ -1,16 +1,28 @@
-# EEG Signal Analysis
+# Power Spectral Density (PSD) Analysis
 
-This repository provides a comprehensive set of tools for analyzing EEG (electroencephalography) signal data. It includes functionality for loading EEG data from a CSV file, computing its Power Spectral Density (PSD), and visualizing the results. The main components of the repository are:
+This repository contains tools for analyzing Power Spectral Density (PSD) of EEG signals. It includes functionality to load EEG data, compute PSD using Welch's method, and visualize the results. Below is a brief explanation of the theory behind PSD and Welch's method.
 
-1. **Data Loading**: Methods to read and preprocess EEG signal data from CSV files.
-2. **PSD Computation**: Tools for calculating the Power Spectral Density (PSD) of the signal to analyze its frequency components.
-3. **Visualization**: Functions to create plots of the time-domain signal and its PSD to aid in understanding the signal's characteristics.
+## Theory
 
-## Features
+### Power Spectral Density (PSD)
 
-- **Load EEG Data**: Import EEG signal data from CSV files with time and amplitude columns.
-- **Compute PSD**: Use Welch’s method to estimate the Power Spectral Density of the signal.
-- **Plotting**: Generate visualizations of both the time-domain signal and its frequency-domain representation.
+**Power Spectral Density (PSD)** is a fundamental concept in signal processing that represents how power (or variance) of a signal is distributed with respect to frequency. For EEG signals, PSD is crucial for understanding the distribution of brain activity across different frequency bands. This helps in:
+
+- **Detecting Brain Activity Patterns**: Identifying cognitive and emotional states by analyzing frequency components.
+- **Diagnosing and Monitoring Neurological Conditions**: Evaluating abnormalities and tracking the progression of conditions.
+- **Developing Biomarkers**: Creating indicators for clinical and research studies.
+- **Filtering Signals**: Removing noise and artifacts to get a clearer representation of the EEG signal.
+- **Understanding Brain-Behavior Relationships**: Linking cognitive and emotional states with brain activity.
+
+### Welch's Method
+
+**Welch's Method** is a technique used to estimate the Power Spectral Density (PSD) of a signal, offering improvements over the basic periodogram method. It reduces variance and provides a more accurate PSD estimate by:
+
+1. **Segmenting the Signal**: Dividing the signal into overlapping segments. This ensures that the entire signal is used for the estimation, improving accuracy.
+2. **Applying Window Functions**: Multiplying each segment by a window function (such as Hamming, Hanning, or Blackman) to reduce edge effects and spectral leakage. This minimizes discontinuities at segment boundaries, leading to a more precise PSD estimate.
+3. **Calculating Periodograms**: For each windowed segment, computing the periodogram, which is the squared magnitude of the Fourier Transform. The periodogram provides an estimate of the PSD for that segment.
+4. **Averaging Periodograms**: Averaging the periodograms of all segments to produce the final PSD estimate. This averaging process reduces variance compared to using a single periodogram, resulting in a smoother and more reliable PSD.
+5. **Normalization**: Adjusting the final PSD estimate to account for overlapping and window effects, ensuring that the PSD values are correctly scaled.
 
 ## Requirements
 
